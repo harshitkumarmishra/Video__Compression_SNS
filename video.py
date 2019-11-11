@@ -12,20 +12,20 @@ def FrameCapture(path):
     success = 1
     while success:         
          success, image = vidObj.read()
-         path = 'D:/python_package/image'
+         path = '/Users/masoomraj/Music/fft/image'
          cv2.imwrite(os.path.join(path , 'frame%d.jpg' % count), image)
          count += 1
 
          
 count = int(0) 
-FrameCapture("D:/python_package/naren.mp4") 
+FrameCapture("/Users/masoomraj/Music/fft/video.mp4") 
 print("NUMBER OF FRAMES: ",count)
 
 
 
 cnt=0
 for i in range(count-1):
-    img="D:/python_package/image/frame"+str(i)+".jpg"
+    img="/Users/masoomraj/Music/fft/image/frame"+str(i)+".jpg"
     cv_img = cv2.imread(img)
     #count=int(0)
     img=cv_img
@@ -43,19 +43,19 @@ for i in range(count-1):
         newfilt=np.multiply(new,ind)
         nfilt=np.fft.ifft2(newfilt)
         nfilt=np.abs(nfilt)
-        path = 'D:/python_package/image1/'
+        path = '/Users/masoomraj/Music/fft/image1/'
         cv2.imwrite(path+str(i)+".jpg", nfilt)
     cnt+=1
 
     
 img_array=[]
 for i in range(0,cnt-1) :
-    image='D:/python_package/image1/'+str(i)+'.jpg'
+    image='/Users/masoomraj/Music/fft/image1/'+str(i)+'.jpg'
     img=cv2.imread(image)
     height,width,layers=img.shape[:3]
     size=(width,height)
     img_array.append(img)
-out=cv2.VideoWriter('project.mp4',cv2.VideoWriter_fourcc(*'XVID'),20,size)
+out=cv2.VideoWriter('/Users/masoomraj/Music/fft/project.mp4',cv2.VideoWriter_fourcc(*'XVID'),20,size)
 
 
 for i in range(int(len(img_array))):
